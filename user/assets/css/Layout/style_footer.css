@@ -1,1 +1,157 @@
-/*# sourceMappingURL=style_footer.css.map */
+#footer {
+  background: #444;
+  padding: 10px;
+  color: white;
+  margin-top: 20px;
+}
+
+.tongsogh {
+  padding: 7px 10px;
+  background: red;
+  margin-right: 20px;
+  margin-left: 5px;
+  color: white;
+  border-radius: 4px;
+}
+
+#dienthongtin .input-group {
+  padding-top: 20px;
+}
+
+.post {
+  width: 80%;
+  height: 160px;
+  padding: 10px;
+}
+.post .names {
+  margin-top: 10px;
+  font-size: 16px;
+}
+.post .names a {
+  color: #444;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.post .names a:hover {
+  color: #ea3a3c;
+}
+
+#tintuc .col-md-12 {
+  padding: 10px;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+#imgmain {
+  width: 70%;
+  text-align: center;
+  line-height: 40px;
+  margin: 20px auto;
+}
+
+#imgdetail > li {
+  padding-left: 32px;
+  border-right: 1px solid #e3e3e3;
+}
+
+#right > li {
+  float: none;
+  padding: 8px;
+}
+#right > li h3 {
+  font-weight: 700;
+  color: #444;
+  font-size: 20px;
+}
+#right > li .btn-default,
+#right > li i {
+  background: #666;
+  color: white;
+  box-shadow: none;
+  border-radius: 0px;
+  padding: 4px 7px;
+}
+#right > li .btn-default:hover,
+#right > li i:hover {
+  background: #ea3a3c;
+}
+
+#tabdetail {
+  margin-top: 20px;
+}
+#tabdetail .tab-content {
+  padding: 20px;
+}
+
+#shareicon {
+  background: #3A3A3A;
+}
+#shareicon ul li {
+  float: left;
+}
+#shareicon ul li:hover i {
+  color: #ea3a3c;
+}
+#shareicon ul li i {
+  font-size: 20px;
+  color: white;
+  padding: 18px;
+  margin-right: 10px;
+}
+
+#ft-about {
+  padding: 15px;
+}
+#ft-about p {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  line-height: 22px;
+  color: #444;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tittle-footer {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #444;
+  line-height: 15px;
+  padding: 10px 20px;
+  font-size: 20px;
+}
+
+.box-footer {
+  border-left: 1px solid #e3e3e3;
+  margin-top: 20px;
+}
+.box-footer ul li {
+  padding-left: 20px;
+}
+.box-footer ul li a {
+  line-height: 25px;
+  padding: 5px 10px;
+  color: #444;
+}
+.box-footer ul li a:hover {
+  color: #ea3a3c;
+}
+
+#footer-support {
+  padding-top: 20px;
+}
+#footer-support i {
+  color: #ea3a3c;
+}
+#footer-support p {
+  font-size: 13px;
+  padding: 5px 5px;
+}
+
+#footer-button {
+  background: #eeeeee;
+}
+
+#ft-bottom {
+  padding: 5px;
+  background: #DDDDDD;
+  color: #444;
+}/*# sourceMappingURL=style_footer.css.map */

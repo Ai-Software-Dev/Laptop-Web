@@ -106,7 +106,7 @@
       </div>
       </div>      
       </div>
-      <script  src="js/slick.min.js"></script>
+      <script  src="assets/js/slick.min.js"></script>
    </body>
 </html>
 <script type="text/javascript">
