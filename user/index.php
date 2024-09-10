@@ -1,5 +1,1 @@
-<?php 
-    include './layout/header.php';
-
-    include './layout/footer.php';
-?>
+<?php include("home.php") ?>

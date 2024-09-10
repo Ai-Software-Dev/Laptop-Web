@@ -106,9 +106,8 @@
       </div>
       </div>      
       </div>
-      <script  src="assets/js/slick.min.js"></script>
-   </body>
-</html>
+      <script  src="/AISoftDev/laptop_web/user/assets/js/slick.min.js"></script>
+
 <script type="text/javascript">
     $(function() {
         $hidenitem = $(".hidenitem");
