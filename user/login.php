@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css" />
 
     <!-- style -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/Layout/style_header.css">
     <link rel="stylesheet" type="text/css" href="assets/css/Layout/style_footer.css">
     <link rel="stylesheet" type="text/css" href="assets/css/Login/style_login.css">
