@@ -43,7 +43,7 @@
                      <a href="index.php">Trang chủ</a>
                   </li>
                   <li>
-                     <a href="#">Laptop</a>
+                     <a href="ProductList.php">Laptop</a>
                   </li>
                   <li>
                      <a href="#">Liên hệ</a>
