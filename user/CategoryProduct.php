@@ -79,14 +79,15 @@
                 {
         ?>
                     <div class="showitem">
-                        <div class="col-md-3 item-product bor" style="height: 300px; margin: 5px; width: 23.8%">
+                        <div class="col-md-3 item-product bor">
                             <a href="ShowDetail.php?id=<?php echo $sp->MaSanPham ?>">
-                                <img src="../public/images/products/<?php echo htmlspecialchars($sp->HinhAnh) ?>" class="" width="100%" height="180">
-                            
+                                <div class="product-img">
+                                    <img src="../public/images/products/<?php echo htmlspecialchars($sp->HinhAnh) ?>" class="" width="100%" height="180">
+                                </div>                            
                                 <div class="info-item">
-                                    <p><?php echo htmlspecialchars($sp->TenSanPham) ?></p> <br>
-                                    <b class="price"><?php echo number_format($sp->GiaBan, 0, ',', '.') ?>đ</b><br>
-                                    <span style="margin-top: 50px;">Đã bán <?php echo getSoLuongDaBanProduct($pdo, $sp->MaSanPham); ?></span>
+                                    <p class="product-name"><?php echo htmlspecialchars($sp->TenSanPham) ?></p> <br>
+                                    <b class="product-price"><?php echo number_format($sp->GiaBan, 0, ',', '.') ?>đ</b><br>
+                                    <h6>Đã bán <?php echo getSoLuongDaBanProduct($pdo, $sp->MaSanPham); ?></h6>
                                 </div>
                             </a>
                         </div>
