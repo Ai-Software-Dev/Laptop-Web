@@ -14,6 +14,7 @@
     <!--  -->
     <link rel="stylesheet" type="text/css" href="assets/css/Layout/style_header.css">
     <link rel="stylesheet" type="text/css" href="assets/css/Layout/style_footer.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/Home/style_home.css">
     <title>Document</title>
 </head>
 
@@ -66,18 +67,18 @@
                     </div>
                 </section>
                 <?php
-                include("TopProductNoiBat.php");
+                include("TrendingProduct.php");
                 ?>
             </div>
             <div class="container">
-                <div class="col-md-4 bottom-content">
-                    <a href=""><img src="../images/free-shipping.png"></a>
+                <div class="col-md-4 bottom-home">
+                    <a href=""><img src="../public/images/logo/free-shipping.png"></a>
                 </div>
-                <div class="col-md-4 bottom-content">
-                    <a href=""><img src="../images/guaranteed.png"></a>
+                <div class="col-md-4 bottom-home">
+                    <a href=""><img src="../public/images/logo/guaranteed.png"></a>
                 </div>
-                <div class="col-md-4 bottom-content">
-                    <a href=""><img src="../images/deal.png"></a>
+                <div class="col-md-4 bottom-home">
+                    <a href=""><img src="../public/images/logo/deal.png"></a>
                 </div>
             </div>
         </div>
@@ -87,5 +88,4 @@
     include('layout/footer.php');
     ?>
 </body>
-
 </html>
