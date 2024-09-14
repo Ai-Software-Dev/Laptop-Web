@@ -21,7 +21,6 @@
 
 <body>
     <?php
-    include("layout/header.php");
     include_once '../core/Connection.php';
     session_start();
     include("layout/header.php");
