@@ -54,18 +54,38 @@
   </tr>
   <tr>
     <td>1</td>
-    <td></td>
-    <td></td>
+    <td>Xây dựng trang Home xem sản phẩm nổi bật</td>
+    <td>Nguyễn Xuân Bính</td>
   </tr>
    <tr>
     <td>2</td>
-    <td></td>
-    <td></td>
+    <td>Xây dựng trang sản phẩm</td>
+    <td>Lưu Đức Vinh</td>
   </tr>
    <tr>
     <td>3</td>
-    <td></td>
-    <td></td>
+    <td>Xây dựng phần tìm kiếm sản phẩm</td>
+    <td>Hà Thị Minh Thư</td>
+  </tr>
+   <tr>
+    <td>4</td>
+    <td>Xây dựng trang chi tiết sản phẩm</td>
+    <td>Nguyễn Xuân Bính</td>
+  </tr>
+   <tr>
+    <td>5</td>
+    <td>Xây dựng trang login</td>
+    <td>Nguyễn Xuân Bính</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Xây dựng trang profile</td>
+    <td>Hà Thị Minh Thư</td>
+  </tr>
+   <tr>
+    <td>7</td>
+    <td>Xây dựng trang giỏ hàng</td>
+    <td>Lưu Đức Vinh</td>
   </tr>
 </table>
 

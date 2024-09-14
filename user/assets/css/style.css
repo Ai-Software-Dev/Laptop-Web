@@ -418,7 +418,6 @@
   }
   .info-item
   {
-      text-align: left;
       border-top:1px solid #e3e3e3;
       padding-top: 5px;
       padding-bottom: 5px;
@@ -434,7 +433,6 @@
       color: #ea3a3c;
   }
   .info-item p {
-      text-align: left;
       color: #000;
       overflow: hidden; /* Ẩn phần dư thừa của nội dung */
       display: -webkit-box; /* Sử dụng display -webkit-box để thiết lập số dòng tối đa */
@@ -447,7 +445,7 @@
   
   .price
   {
-      color: #ea3a3c;
+      color: #fb0004;
   }
   
   .item-product 
