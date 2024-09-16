@@ -6,7 +6,7 @@
          <div class="container">
             <div class="row" id="header-main">
                <div class="col-md-4 logo">
-                  <a href="../index.php">
+                  <a href="index.php">
                      <img src="../public/images/logo/logo_btv.png"> <span>SHOP</span>
                   </a>
                </div>
