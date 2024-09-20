@@ -18,75 +18,74 @@
     <link rel="stylesheet" type="text/css" href="assets/css/Cart/style_cart.css">
 
     <style>
-            button[name="btn_decrease"] {
-                width: 25px;
-                height: 25px;
-                font-size: 30px;  /* Điều chỉnh kích thước font lên 30px */
-                line-height: 25px;
-                color: white;
-                background-color: gray;
-                border: none;
-                border-radius: 50%;
-                text-align: center;
-                padding: 0;
-                margin: 0;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                vertical-align: middle;
-            }
-            button[name="btn_increase"] {
-                width: 25px;
-                height: 25px;
-                font-size: 20px;  /* Điều chỉnh kích thước font lên 30px */
-                line-height: 25px;
-                color: white;
-                background-color: gray;
-                border: none;
-                border-radius: 50%;
-                text-align: center;
-                padding: 0;
-                margin: 0;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                vertical-align: middle;
-            }
-            .alert {
-                padding: 20px;
-                background-color: #f44336;
-                color: white;
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: 99999; /* Ensure it is above all other elements */
-                width: 80%; /* Optional: Adjust width as needed */
-                max-width: 500px; /* Optional: Set a max-width */
-                text-align: center;
-            }
+        button[name="btn_decrease"] {
+            width: 25px;
+            height: 25px;
+            font-size: 30px;  /* Điều chỉnh kích thước font lên 30px */
+            line-height: 25px;
+            color: white;
+            background-color: gray;
+            border: none;
+            border-radius: 50%;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
+        }
+        button[name="btn_increase"] {
+            width: 25px;
+            height: 25px;
+            font-size: 20px;  /* Điều chỉnh kích thước font lên 30px */
+            line-height: 25px;
+            color: white;
+            background-color: gray;
+            border: none;
+            border-radius: 50%;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
+        }
+        .alert {
+            padding: 20px;
+            background-color: #f44336;
+            color: white;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 99999; /* Ensure it is above all other elements */
+            width: 80%; /* Optional: Adjust width as needed */
+            max-width: 500px; /* Optional: Set a max-width */
+            text-align: center;
+        }
 
-            .closebtn {
-                margin-left: 15px;
-                color: white;
-                font-weight: bold;
-                float: right;
-                font-size: 22px;
-                line-height: 20px;
-                cursor: pointer;
-                transition: 0.3s;
-            }
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-            .closebtn:hover {
-                color: black;
-            }
-        </style>
+        .closebtn:hover {
+            color: black;
+        }
+    </style>
 </head>
 <body>
 <?php
     include_once '../core/Connection.php';
     session_start();
-    include('layout/header.php');
 
     // Get the MaGioHang for the current user
     $sql_magiohang = "SELECT MaGioHang FROM GIOHANG WHERE MaTaiKhoan = :mataikhoan";
@@ -260,6 +259,9 @@
             }
         }
     }
+
+    include('layout/header.php');
+
     function showTongTien($chitietgiohang)
     {
         $total_price = 0;
