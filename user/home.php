@@ -15,14 +15,15 @@
     <link rel="stylesheet" type="text/css" href="assets/css/Layout/style_header.css">
     <link rel="stylesheet" type="text/css" href="assets/css/Layout/style_footer.css">
     <link rel="stylesheet" type="text/css" href="assets/css/Home/style_home.css">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Trang chủ</title>
 </head>
 
 <body>
     <?php
     include_once '../core/Connection.php';
     session_start();
-    include('layout/header.php');
+    include("layout/header.php");
     ?>
     <div id="maincontent">
         <div class="container">
@@ -85,7 +86,9 @@
     </div>
 
     <?php
-    include('layout/footer.php');
+    include("layout/footer.php");
     ?>
+
 </body>
+
 </html>

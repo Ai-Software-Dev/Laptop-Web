@@ -1,0 +1,85 @@
+
+/* Đoạn mã CSS này sẽ áp dụng cho cả phần bên trái và bên phải của maincontent */
+#maincontent .col-md-4 {
+    padding-right: 20px; 
+    border-right: 1px solid #ccc;
+}
+
+#maincontent .col-md-8 {
+    padding-top: 11px;
+    padding-left: 15px; /* Khoảng cách từ phía trái */
+}
+
+/* Đoạn mã CSS này áp dụng cho tiêu đề và nội dung trong maincontent */
+#maincontent h1.title-head {
+    font-size: 22px; /* Kích thước font */
+    margin-bottom: 20px; /* Khoảng cách từ phía dưới */
+    font-weight: bolder;
+}
+
+#maincontent .form-signup p {
+    font-size: 18px;
+}
+
+/* Định dạng cho các mục trong phần bên trái của maincontent */
+#maincontent .block-account {
+    padding: 10px; /* Khoảng cách xung quanh */
+    border-radius: 5px; /* Đường viền cong */
+    margin-bottom: 20px; /* Khoảng cách từ phía dưới */
+}
+
+#maincontent .block-account .title-account {
+    font-size: 22px;
+    font-weight: 500; /* Font chữ đậm */
+    margin-bottom: 8px; /* Khoảng cách từ phía dưới */
+    font-weight: bolder;
+}
+
+#maincontent .block-account ul {
+    list-style-type: none; /* Loại bỏ dấu đầu dòng */
+    padding: 0;
+}
+
+#maincontent .block-account ul li {
+    margin-left: 10px;
+    margin-bottom: 19px; /* Khoảng cách giữa các mục */
+}
+
+#maincontent .block-account ul li a {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333; /* Màu chữ */
+    text-decoration: none; /* Loại bỏ gạch chân */
+}
+
+#maincontent .block-account ul li a:hover {
+    text-decoration: underline; /* Gạch chân khi di chuột qua */
+}
+
+
+
+/* CSS cho bảng đơn hàng */
+.table.table-bordered th, .table.table-bordered td {
+    font-size: 14px; /* Kích thước chữ */
+    font-weight: bold; /* Độ đậm chữ */
+    text-align: left; /* Canh giữa chữ */
+}
+
+.table.table-bordered {
+    border-left: none; /* Loại bỏ dấu gạch bên trái của tiêu đề */
+    border-right: none; 
+}
+
+.table.table-bordered th {
+    border-left: none; /* Loại bỏ dấu gạch bên trái của tiêu đề */
+    border-right: none; /* Loại bỏ dấu gạch bên trái của tiêu đề */
+}
+
+.table.table-bordered td {
+    border-left: none; /* Loại bỏ dấu gạch bên trái của các ô */
+    border-right: none; /* Loại bỏ dấu gạch bên trái của tiêu đề */ 
+}
+
+table.table-bordered th.no-border-left {
+    border-left: none;
+}
