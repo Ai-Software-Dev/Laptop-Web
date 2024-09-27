@@ -1,0 +1,11 @@
+.btnThaoTac {
+    border: none;
+    background: none;
+    float: left;
+    color: #4e73df;
+}
+
+.btnThaoTac:hover {
+    text-decoration: underline;
+    font-size: xx-small;
+}
