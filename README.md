@@ -87,6 +87,41 @@
     <td>Xây dựng trang giỏ hàng</td>
     <td>Lưu Đức Vinh</td>
   </tr>
+  <tr>
+    <td>8</td>
+    <td>Xây dựng trang quản lý đơn hàng & checkout</td>
+    <td>Lưu Đức Vinh</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>Thay đổi mật khẩu</td>
+    <td>Hà Thị Minh Thư</td>
+  </tr>
+   <tr>
+    <td>10</td>
+    <td>Đăng ký tài khoản</td>
+    <td>Nguyễn Xuân Bính</td>
+  </tr>
+   <tr>
+    <td>11</td>
+    <td>Xây dựng khung trang admin</td>
+    <td>Nguyễn Xuân Bính</td>
+  </tr>
+   <tr>
+    <td>12</td>
+    <td>Báo Cáo thống kê</td>
+    <td>Nguyễn Xuân Bính</td>
+  </tr>
+   <tr>
+    <td>13</td>
+    <td>Quản lý thương hiệu</td>
+    <td>Hà Thị Minh Thư</td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>Quản lý sản phẩm</td>
+    <td>Lưu Đức Vinh</td>
+  </tr>
 </table>
 
 # Chức năng 
