@@ -122,6 +122,26 @@
     <td>Quản lý sản phẩm</td>
     <td>Lưu Đức Vinh</td>
   </tr>
+  <tr>
+    <td>15</td>
+    <td>Quản lý đơn hàng</td>
+    <td>Nguyễn Xuân Bính</td>
+  </tr>
+   <tr>
+    <td>16</td>
+    <td>Quản lý khách hàng</td>
+    <td>Nguyễn Xuân Bính</td>
+  </tr>
+   <tr>
+    <td>17</td>
+    <td>Xuất đóa đơn</td>
+    <td>Hà Thị Minh Thư</td>
+  </tr>
+   <tr>
+    <td>18</td>
+    <td>Xác nhận đơn hàng</td>
+    <td>Lưu Đức Vinh</td>
+  </tr>
 </table>
 
 # Chức năng 
