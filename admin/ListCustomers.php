@@ -5,7 +5,7 @@
    <?php
       include_once '../core/Connection.php';
       
-      $sql = "select * from user";
+      $sql = "select * from users";
       $st = $pdo->prepare($sql);
       $st->execute();
 

@@ -21,36 +21,37 @@
          $tbmatkhau = "";
          $thongbao = "";
          
-         if(isset($_POST['login'])) {
-            if(empty($_POST['tendangnhap']) && empty($_POST['matkhau'])) {
+         if (isset($_POST['login'])) {
+            if (empty($_POST['tendangnhap']) && empty($_POST['matkhau'])) {
                 $tbtaikhoan = "Vui lòng nhập tài khoản";
                 $tbmatkhau = "Vui lòng nhập mật khẩu";
+            } elseif (empty($_POST['tendangnhap'])) {
+                $tbtaikhoan = "Vui lòng nhập tài khoản";
+            } elseif (empty($_POST['matkhau'])) {
+                $tbmatkhau = "Vui lòng nhập mật khẩu";
+            } else {
+                $tendangnhap = $_POST['tendangnhap'];
+                $matkhau = $_POST['matkhau'];
+        
+                $sql = "SELECT * FROM admin WHERE TenTaiKhoan = :tendangnhap AND MatKhau = :matkhau";
+        
+                $st = $pdo->prepare($sql);
+                $st->execute([':tendangnhap' => $tendangnhap, ':matkhau' => $matkhau]);
+        
+                // Kiểm tra kết quả từ fetch()
+                $result = $st->fetch(PDO::FETCH_ASSOC);
+        
+                if ($result) {
+                    session_start();
+                    $_SESSION['tendangnhap'] = $tendangnhap;
+        
+                    header('Location: Home.php');
+                    exit();
+                } else {
+                    $thongbao = "Tài khoản hoặc mật khẩu không đúng, vui lòng thử lại!";
+                }
             }
-             else if(empty($_POST['tendangnhap'])) {
-                $tbtaikhoan = "Vui lòng nhập tài khoản";
-             }  else if(empty($_POST['matkhau'])) {
-                $tbmatkhau = "Vui lòng nhập mật khẩu";
-             } else {
-                 $tendangnhap = $_POST['tendangnhap'];
-                 $matkhau = $_POST['matkhau'];
-         
-                 $sql = "SELECT * FROM admin WHERE TenTaiKhoan = :tendangnhap AND MatKhau = :matkhau";
-         
-                 $st = $pdo->prepare($sql);
-         
-                 $st->execute([':tendangnhap' => $tendangnhap, ':matkhau' => $matkhau]);
-         
-                 if($st->rowCount() > 0) {
-                     session_start();
-                     $_SESSION['tendangnhap'] = $tendangnhap;
-         
-                     header('Location: Home.php');
-                     exit();
-                 } else {
-                     $thongbao = "Tài khoản hoặc mật khẩu không đúng, vui lòng thử lại!";
-                 }
-             }
-         }
+        }
          ?>
    </head>
    <body class="bg-gradient-primary">

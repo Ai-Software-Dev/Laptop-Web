@@ -5,7 +5,7 @@
    // Thống kê ngày
    $sqlngay = "SELECT SUM(TongTien) AS TongThanhTien
    FROM hoadon
-   WHERE DATE(NgayMua) = CURRENT_DATE()";
+   WHERE CONVERT(DATE, NgayMua) = CONVERT(DATE, CURRENT_TIMESTAMP)";
 
    $stngay = $pdo->prepare($sqlngay);
    $stngay->execute();
@@ -14,29 +14,27 @@
       $dtNgay = $stngay->fetchAll(PDO::FETCH_OBJ);
    }
 
-
    // Thống kê tháng
    $sqlthang = "SELECT SUM(TongTien) AS TongThanhTien
    FROM hoadon
-   WHERE MONTH(NgayMua) = MONTH(CURRENT_DATE()) AND YEAR(NgayMua) = YEAR(CURRENT_DATE())";
+   WHERE MONTH(NgayMua) = MONTH(CURRENT_TIMESTAMP) AND YEAR(NgayMua) = YEAR(CURRENT_TIMESTAMP)";
 
    $stthang = $pdo->prepare($sqlthang);
    $stthang->execute();
 
-   if ($st->rowCount()) {
+   if ($stthang->rowCount()) {
       $dtThang = $stthang->fetchAll(PDO::FETCH_OBJ);
    }
 
    // Thống kê năm
-
    $sqlnam = "SELECT SUM(TongTien) AS TongThanhTien
         FROM hoadon
-        WHERE YEAR(NgayMua) = YEAR(CURRENT_DATE())";
+        WHERE YEAR(NgayMua) = YEAR(CURRENT_TIMESTAMP)";
 
    $stnam = $pdo->prepare($sqlnam);
    $stnam->execute();
 
-   if ($st->rowCount()) {
+   if ($stnam->rowCount()) {
       $dtnam = $stnam->fetchAll(PDO::FETCH_OBJ);
    }
 ?>

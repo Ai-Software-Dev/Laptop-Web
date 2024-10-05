@@ -17,7 +17,7 @@
         $confirmPassword = $_POST['confirmPassword'];
 
         // Kiểm tra mật khẩu hiện tại của người dùng
-        $stmt = $pdo->prepare("SELECT * FROM user WHERE MaTaiKhoan = :matk");
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE MaTaiKhoan = :matk");
         $stmt->bindParam(':matk', $matk);
         $stmt->execute();
         $userData = $stmt->fetch();
@@ -39,7 +39,7 @@
         }
 
         // Cập nhật mật khẩu mới vào cơ sở dữ liệu
-        $updateStmt = $pdo->prepare("UPDATE user SET MatKhau = :newPassword WHERE MaTaiKhoan = :matk");
+        $updateStmt = $pdo->prepare("UPDATE users SET MatKhau = :newPassword WHERE MaTaiKhoan = :matk");
         $updateStmt->bindParam(':newPassword', $newPassword);
         $updateStmt->bindParam(':matk', $matk);
         $updateStmt->execute();

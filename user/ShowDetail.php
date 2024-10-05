@@ -88,62 +88,71 @@
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['SoLuongDaBan'] ?? 0;
     }
-
     if (isset($_POST["btn_addcart"])) {
         $sql_magiohang = "SELECT MaGioHang FROM GIOHANG WHERE MaTaiKhoan = :mataikhoan";
         $stmt_magiohang = $pdo->prepare($sql_magiohang);
         $stmt_magiohang->execute(['mataikhoan' => $_SESSION["mataikhoan"]]);
         $result = $stmt_magiohang->fetch(PDO::FETCH_ASSOC);
+        
+        // Kiểm tra nếu giỏ hàng tồn tại
+        if ($result) {
+            $magiohang = $result['MaGioHang'];
+            $masp = $_POST["masp"];
+            $dongia = $_POST["dongia"];
+            $soluong = $_POST["soluong"];
+    
+           // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
+            $sql_KTRATonTai = "SELECT * FROM CHITIETGIOHANG WHERE MAGIOHANG = :magiohang AND MASANPHAM = :masp";
+            $st_KTRATonTai = $pdo->prepare($sql_KTRATonTai);
+            $st_KTRATonTai->execute(['magiohang' => $magiohang, 'masp' => $masp]);
 
-        $magiohang = $result['MaGioHang'];
-        $masp = $_POST["masp"];
-        $dongia = $_POST["dongia"];
-        $soluong = $_POST["soluong"];
+            // Lấy dữ liệu sản phẩm từ giỏ hàng
+            $currentProduct = $st_KTRATonTai->fetch(PDO::FETCH_ASSOC);
 
-        $sql_KTRATonTai = "SELECT * FROM CHITIETGIOHANG WHERE MAGIOHANG = :magiohang AND MASANPHAM = :masp";
-        $st_KTRATonTai = $pdo->prepare($sql_KTRATonTai);
-        $st_KTRATonTai->execute(['magiohang' => $magiohang, 'masp' => $masp]);
+            if ($currentProduct) {
+                // Lấy số lượng hiện tại trong giỏ hàng
+                $current_cart_quantity = $currentProduct['SoLuong'];
 
-        if ($st_KTRATonTai->rowCount() > 0) {
-            // Lấy số lượng hiện tại trong giỏ hàng
-            $current_cart_quantity = $st_KTRATonTai->fetch(PDO::FETCH_ASSOC)['SoLuong'];
+                // Lấy số lượng hàng còn trong kho của sản phẩm
+                $sql_get_stock = "SELECT SoLuong FROM SANPHAM WHERE MaSanPham = :masp";
+                $stmt_get_stock = $pdo->prepare($sql_get_stock);
+                $stmt_get_stock->execute(['masp' => $masp]);
+                $product_stock = $stmt_get_stock->fetch(PDO::FETCH_ASSOC)['SoLuong'];
 
-            // Lấy số lượng hàng còn trong kho của sản phẩm
-            $sql_get_stock = "SELECT SoLuong FROM SANPHAM WHERE MaSanPham = :masp";
-            $stmt_get_stock = $pdo->prepare($sql_get_stock);
-            $stmt_get_stock->execute(['masp' => $masp]);
-            $product_stock = $stmt_get_stock->fetch(PDO::FETCH_ASSOC)['SoLuong'];
+                // Tính toán số lượng mới sau khi thêm vào giỏ hàng
+                $new_quantity = $current_cart_quantity + $soluong;
 
-            // Tính toán số lượng mới sau khi thêm vào giỏ hàng
-            $new_quantity = $current_cart_quantity + $soluong;
-
-            if ($new_quantity <= $product_stock) {
-                $sql_update_CTGH = "UPDATE CHITIETGIOHANG SET SOLUONG = :soluong, THANHTIEN = :thanhtien WHERE MAGIOHANG = :magiohang AND MASANPHAM = :masp";
-                $st_updateCTGH = $pdo->prepare($sql_update_CTGH);
-                $st_updateCTGH->execute([
-                    'soluong' => $new_quantity,
-                    'thanhtien' => $new_quantity * $dongia,
-                    'magiohang' => $magiohang,
-                    'masp' => $masp
-                ]);
+                if ($new_quantity <= $product_stock) {
+                    $sql_update_CTGH = "UPDATE CHITIETGIOHANG SET SOLUONG = :soluong, THANHTIEN = :thanhtien WHERE MAGIOHANG = :magiohang AND MASANPHAM = :masp";
+                    $st_updateCTGH = $pdo->prepare($sql_update_CTGH);
+                    $st_updateCTGH->execute([
+                        'soluong' => $new_quantity,
+                        'thanhtien' => $new_quantity * $dongia,
+                        'magiohang' => $magiohang,
+                        'masp' => $masp
+                    ]);
+                } else {
+                    ?>
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        <p style="font-size: 25px;">Thông báo</p>
+                        <p style="font-size: 18px; color:white">Số lượng vượt quá số lượng sản phẩm có sẵn.</p>
+                    </div>
+                    <?php
+                }
             } else {
-    ?>
-                <div class="alert">
-                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                    <p style="font-size: 25px;">Thông báo</p>
-                    <p style="font-size: 18px; color:white">Số lượng vượt quá số lượng sản phẩm có sẵn.</p>
-                </div>
-    <?php
+                $sql_insert_CTGH = "INSERT INTO CHITIETGIOHANG (MaGioHang, MaSanPham, SoLuong, ThanhTien) VALUES (:magiohang, :masp, :soluong, :thanhtien)";
+                $st_insertCTGH = $pdo->prepare($sql_insert_CTGH);
+                $st_insertCTGH->execute([
+                    'magiohang' => $magiohang,
+                    'masp' => $masp,
+                    'soluong' => $soluong,
+                    'thanhtien' => $soluong * $dongia
+                ]);
             }
         } else {
-            $sql_insert_CTGH = "INSERT INTO CHITIETGIOHANG (MaGioHang, MaSanPham, SoLuong, ThanhTien) VALUES (:magiohang, :masp, :soluong, :thanhtien)";
-            $st_insertCTGH = $pdo->prepare($sql_insert_CTGH);
-            $st_insertCTGH->execute([
-                'magiohang' => $magiohang,
-                'masp' => $masp,
-                'soluong' => $soluong,
-                'thanhtien' => $soluong * $dongia
-            ]);
+            // Nếu không tìm thấy giỏ hàng
+            echo "Giỏ hàng không tồn tại.";
         }
     }
     ?>

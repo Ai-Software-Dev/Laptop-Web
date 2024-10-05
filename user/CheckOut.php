@@ -121,7 +121,7 @@
             }
             else
             {
-                $sql_inserthd = "INSERT INTO HOADON (MaTaiKhoan, NgayMua, DiaChi, SDT, HinhThucThanhToan, TongTien, TrangThai) VALUES (:matk, NOW(), :diachi, :sdt, :hinhthuc, :tongtien, :trangthai)";
+                $sql_inserthd = "INSERT INTO HOADON (MaTaiKhoan, NgayMua, DiaChi, SDT, HinhThucThanhToan, TongTien, TrangThai) VALUES (:matk, GETDATE(), :diachi, :sdt, :hinhthuc, :tongtien, :trangthai)";
                 $st_inserthd = $pdo->prepare($sql_inserthd);
                 $st_inserthd->execute([
                     'matk' => $_SESSION["mataikhoan"],

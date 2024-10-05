@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="assets/css/slick.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css" />
 
-    <!--  -->
     <link rel="stylesheet" type="text/css" href="assets/css/Layout/style_header.css">
     <link rel="stylesheet" type="text/css" href="assets/css/Layout/style_footer.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -35,13 +34,12 @@
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm_password'];
 
-
         // Kiểm tra mật khẩu và xác nhận mật khẩu khớp nhau
         if ($password != $confirm_password) {
             $error_message = "Mật khẩu và xác nhận mật khẩu không khớp!";
         } else {
             // Kiểm tra xem tên tài khoản đã tồn tại hay chưa
-            $sql = "SELECT * FROM user WHERE TenTaiKhoan = :username";
+            $sql = "SELECT * FROM users WHERE TenTaiKhoan = :username"; // Use square brackets here
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':username', $username);
             $stmt->execute();
@@ -50,7 +48,7 @@
                 $error_message = "Tên tài khoản đã tồn tại!";
             } else {
                 // Thêm tài khoản mới vào cơ sở dữ liệu
-                $sql = "INSERT INTO user (TenKhachHang, TenTaiKhoan, MatKhau, Email) VALUES (:fullname, :username, :password, :email)";
+                $sql = "INSERT INTO [user] (TenKhachHang, TenTaiKhoan, MatKhau, Email) VALUES (:fullname, :username, :password, :email)"; // Use square brackets here
                 $sql2 = "INSERT INTO giohang (MaTaiKhoan) VALUES (:matk)";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(':fullname', $fullname);
@@ -66,6 +64,7 @@
 
                     $_SESSION['username'] = $username;
                     $_SESSION['tenkhachhang'] = $fullname;
+                    $_SESSION['mataikhoan'] = $matk;
                     $_SESSION['email'] = $email;
                     header("Location: login.php");
                     exit();

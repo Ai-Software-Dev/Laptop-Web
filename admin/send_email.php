@@ -4,7 +4,7 @@
 
     if(isset($_GET['id'])) {
         $mahoadon = $_GET['id'];
-        $sql = "SELECT user.Email FROM user JOIN hoadon ON user.MaTaiKhoan = hoadon.MaTaiKhoan WHERE hoadon.MaHoaDon = :mahoadon";
+        $sql = "SELECT users.Email FROM users JOIN hoadon ON users.MaTaiKhoan = hoadon.MaTaiKhoan WHERE hoadon.MaHoaDon = :mahoadon";
         $st = $pdo->prepare($sql);
         $st->bindParam(':mahoadon', $mahoadon);
         $st->execute();
@@ -28,7 +28,7 @@
             $mail->Port = 465;
             $mail->IsHTML(true);
             $mail->Username = "maxmaxshopp@gmail.com";
-            $mail->Password = "iyuu qojn bpxj bmlz";
+            $mail->Password = "rhrg obph rbpg tmsm";
             $mail->SetFrom("maxmaxshopp@gmail.com");
             $mail->Subject = "BTVSHOP";
             $mail->Body = "Đơn hàng của bạn đã được xác nhận. Cảm ơn quý khách đã đặt hàng.";

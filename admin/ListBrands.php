@@ -11,9 +11,8 @@ include('includes/header.php');
     $st = $pdo->prepare($sql);
     $st->execute();
 
-    if ($st->rowCount() > 0) {
-        $hangsp = $st->fetchAll(PDO::FETCH_OBJ);
-    }
+    // Lấy tất cả dữ liệu và kiểm tra nếu có dữ liệu
+    $hangsp = $st->fetchAll(PDO::FETCH_OBJ);
 
     // Xử lý xóa thương hiệu
     if (isset($_POST["delete"])) {
@@ -42,7 +41,10 @@ include('includes/header.php');
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($hangsp as $hsp) { ?>
+                        <?php 
+                        // Kiểm tra nếu có dữ liệu trong $hangsp
+                        if (!empty($hangsp)) {
+                            foreach ($hangsp as $hsp) { ?>
                             <tr style="line-height: 80px">
                                 <td><?php echo $hsp->MaHang ?></td>
                                 <td><?php echo $hsp->TenHang ?></td>
@@ -54,6 +56,12 @@ include('includes/header.php');
                                     <strong>|</strong>
                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" data-mahang="<?php echo $hsp->MaHang; ?>">Xóa</button>
                                 </td>
+                            </tr>
+                        <?php 
+                            }
+                        } else { ?>
+                            <tr>
+                                <td colspan="4">Không có thương hiệu nào.</td>
                             </tr>
                         <?php } ?>
                     </tbody>

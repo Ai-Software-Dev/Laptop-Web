@@ -15,7 +15,7 @@
     <!--  -->
     <link rel="stylesheet" type="text/css" href="assets/css/Layout/style_header.css">
     <link rel="stylesheet" type="text/css" href="assets/css/Layout/style_footer.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/Home/style_home.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/Profile/style_profile.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
