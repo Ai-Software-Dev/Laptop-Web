@@ -7,7 +7,7 @@
     <?php
        include_once '../core/Connection.php';
 
-        $sql = "SELECT * FROM sanpham ORDER BY GiaBan DESC LIMIT 8";
+        $sql = "SELECT TOP 8 * FROM sanpham ORDER BY GiaBan DESC";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $sps = $stmt->fetchAll(PDO::FETCH_OBJ);

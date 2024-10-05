@@ -48,7 +48,8 @@
             'mahang' => $mahang
         ]);
         $count = $sta->fetchColumn();
-    $p = new Pager();
+
+        $p = new Pager();
         $limit = 8;  // Thiết lập số sản phẩm của 1 trang.
         $vt = $p->findStart($limit);
         $pages = $p->findPages($count, $limit);
@@ -58,7 +59,7 @@
         $phantrang = $p->pageList($cur, $pages, isset($_GET["mh"]) ? "&mh=" . $_GET["mh"] : "");
 
         // Query to fetch the records for the current page
-        $sql2 = "SELECT * FROM sanpham WHERE MaHang = :mahang LIMIT $limit OFFSET $vt";
+        $sql2 = "SELECT * FROM sanpham WHERE MaHang = :mahang ORDER BY MaSanPham OFFSET $vt ROWS FETCH NEXT $limit ROWS ONLY"; // Cập nhật câu truy vấn
         $sta = $pdo->prepare($sql2);
         $sta->execute([
             'mahang' => $mahang
@@ -66,7 +67,6 @@
         $san_pham = $sta->fetchAll(PDO::FETCH_OBJ);
         // Tính toán lại số lượng sản phẩm
         $num_products = count($san_pham);
-
     ?>
 </head>
 <body>
@@ -75,7 +75,7 @@
         <?php
             if (!empty($sps))
             {
-                foreach($sps as $sp)
+                foreach($san_pham as $sp)
                 {
         ?>
                     <div class="showitem">
@@ -95,7 +95,7 @@
         <?php
                 }
             }
-        else
+            else
             {
         ?>
             <h4 style="text-align: center; margin-top:25px; color: red; font-weight: bold;">Không có sản phẩm nào thuộc hãng này!</h4>

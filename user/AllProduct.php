@@ -39,7 +39,7 @@
         $pages = $p->findPages($count, $limit);
 
         // Query to fetch the records for the current page
-        $sql2 = "SELECT * FROM sanpham LIMIT $limit OFFSET $vt";
+        $sql2 = "SELECT * FROM sanpham ORDER BY MaSanPham OFFSET $vt ROWS FETCH NEXT $limit ROWS ONLY"; // Cập nhật câu truy vấn
         $sta = $pdo->prepare($sql2);
         $sta->execute();
         $san_pham = $sta->fetchAll(PDO::FETCH_OBJ);
@@ -75,8 +75,6 @@
                 }
             }
         ?>
-
-        
     </section>
     
 </body>

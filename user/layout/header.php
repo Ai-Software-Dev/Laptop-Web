@@ -45,10 +45,10 @@
                   <a href="ProductList.php">Laptop</a>
                </li>
                <li>
-                  <a href="#">Liên hệ</a>
+                  <a href="LienHe.php">Liên hệ</a>
                </li>
                <li>
-                  <a href="#">Giới thiệu</a>
+                  <a href="GioiThieu.php">Giới thiệu</a>
                </li>
             </ul>
             <!-- end menu main-->
