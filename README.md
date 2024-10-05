@@ -32,7 +32,7 @@
 # Sử dụng
 <nav>
   <ul>
-    <li>Database: MySQL</li>
+    <li>Database: SQL Server</li>
     <li>Ngôn ngữ: PHP</li>
     <li>Công cụ: Visual Studio Code</li>
     <li>AI: Chatbox</li>
@@ -145,6 +145,16 @@
    <tr>
     <td>19</td>
     <td>Xác nhận đơn hàng</td>
+    <td>Lưu Đức Vinh</td>
+  </tr>
+   <tr>
+    <td>20</td>
+    <td>Xây dựng trang liên hệ</td>
+    <td>Lưu Đức Vinh</td>
+  </tr>
+   <tr>
+    <td>21</td>
+    <td>Xây dựng trang giới thiệu</td>
     <td>Lưu Đức Vinh</td>
   </tr>
 </table>
