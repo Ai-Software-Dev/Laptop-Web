@@ -66,6 +66,7 @@
 
                     $_SESSION['username'] = $username;
                     $_SESSION['tenkhachhang'] = $fullname;
+                    $_SESSION['mataikhoan'] = $matk;
                     $_SESSION['email'] = $email;
                     header("Location: login.php");
                     exit();
