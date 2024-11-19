@@ -5,15 +5,34 @@ include('includes/header.php');
 <div>
     <?php
     include_once '../core/Connection.php';
+    include './Cloudinary.php';
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $tenHang = $_POST['tenHang'];
-        $logo = $_FILES['logo']['name'];
+        $logo = '';
 
-        $target_dir = "../public/images/logo/";
-        $target_file = $target_dir . basename($_FILES["logo"]["name"]);
-        move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file);
+        if (!empty($_FILES['logo']['name'])) {
+            $fileTmpPath = $_FILES['logo']['tmp_name'];
+            $fileName = $_FILES['logo']['name'];
 
+            try {
+                // Upload ảnh lên Cloudinary
+                $uploadResult = $cloudinary->uploadApi()->upload($fileTmpPath, [
+                    'folder' => 'IMG_PTPM/Category', // Tên thư mục trên Cloudinary
+                    'public_id' => pathinfo($fileName, PATHINFO_FILENAME), // Tên file không có đuôi
+                    'overwrite' => true,
+                    'resource_type' => 'image',
+                ]);
+
+                // Lấy URL ảnh trên Cloudinary
+                $logo = $uploadResult['secure_url'];
+            } catch (Exception $e) {
+                die('Lỗi upload ảnh lên Cloudinary: ' . $e->getMessage());
+            }
+        }
+
+        // Lưu thông tin vào cơ sở dữ liệu
         $sqlInsert = "INSERT INTO hang (TenHang, Logo) VALUES (:tenHang, :logo)";
         $stmt = $pdo->prepare($sqlInsert);
         $stmt->execute([':tenHang' => $tenHang, ':logo' => $logo]);
@@ -21,14 +40,12 @@ include('includes/header.php');
         header("Location: ListBrands.php");
         exit();
     ?>
-
         <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 400px; margin: 20px auto">
             <strong>Thành công!</strong> Thêm thương hiệu mới thành công.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="float: right; background: none; border: none;">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
-
     <?php
     }
     ?>

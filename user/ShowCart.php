@@ -297,7 +297,7 @@
                                         <tr>
                                             <td style="word-break: break-all; vertical-align: middle;">
                                                 <a style="font-size: 16px;" href="ShowDetail.php?id=<?php echo $row->MASANPHAM ?>">
-                                                    <img src="../public/images/products/<?php echo $row->HINHANH ?>" width="60" height="60">
+                                                    <img src="<?php echo $row->HINHANH ?>" width="60" height="60">
                                                     <?php echo $row->TENSANPHAM ?>
                                                 </a>
                                             </td>

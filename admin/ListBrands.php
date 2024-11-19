@@ -49,7 +49,7 @@ include('includes/header.php');
                                 <td><?php echo $hsp->MaHang ?></td>
                                 <td><?php echo $hsp->TenHang ?></td>
                                 <td>
-                                    <img src="../public/images/logo/<?php echo $hsp->Logo ?>" alt="<?php echo $hsp->Logo ?>" style="height: 50px; width: auto;">
+                                    <img src="<?php echo $hsp->Logo ?>" alt="<?php echo $hsp->Logo ?>" style="height: 50px; width: auto;">
                                 </td>
                                 <td>
                                     <a href="UpdateBrands.php?id=<?php echo $hsp->MaHang ?>" class="btn btn-primary">Chỉnh sửa</a>

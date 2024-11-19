@@ -165,7 +165,7 @@
             ?>
                 <div class="container bor" style="overflow: hidden; padding: 20px">
                     <div class="col-md-3">
-                        <img src="    ../public/images/products/<?php echo $row["HinhAnh"] ?>" style="width: 100%;">
+                        <img src="<?php echo $row["HinhAnh"] ?>" style="width: 100%;">
                     </div>
                     <div class="col-md-9">
                         <h3 style="font-weight: bold;"><?php echo $row["TenSanPham"] ?></h3>

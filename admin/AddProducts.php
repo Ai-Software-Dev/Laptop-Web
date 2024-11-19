@@ -5,6 +5,8 @@
 <div>
 <?php
    include_once '../core/Connection.php';
+   include './Cloudinary.php';
+
    
    $sqlhang = "SELECT * FROM hang";
    $sthang = $pdo->prepare($sqlhang);
@@ -15,48 +17,58 @@
    }
    
    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $tenSanPham = $_POST['tenSanPham'];
-    $maHang = $_POST['tenHang'];
-    $giaBan = $_POST['giaBan'];
-    $cpu = $_POST['cpu'];
-    $ram = $_POST['ram'];
-    $oCung = $_POST['oCung'];
-    $manHinh = $_POST['manHinh'];
-    $vga = $_POST['vga'];
-    $heDieuHanh = $_POST['heDieuHanh'];
-    $trongLuong = $_POST['trongLuong'];
-    $pin = $_POST['pin'];
-    $soLuong = $_POST['soLuong'];
-    $moTa = $_POST['moTa'];
-    $hinhAnh = $_FILES['hinhAnh']['name'];
+      $tenSanPham = $_POST['tenSanPham'];
+      $maHang = $_POST['tenHang'];
+      $giaBan = $_POST['giaBan'];
+      $cpu = $_POST['cpu'];
+      $ram = $_POST['ram'];
+      $oCung = $_POST['oCung'];
+      $manHinh = $_POST['manHinh'];
+      $vga = $_POST['vga'];
+      $heDieuHanh = $_POST['heDieuHanh'];
+      $trongLuong = $_POST['trongLuong'];
+      $pin = $_POST['pin'];
+      $soLuong = $_POST['soLuong'];
+      $moTa = $_POST['moTa'];
+      $hinhAnh = $_FILES['hinhAnh']['tmp_name'];
+  
+      try {
+          // Upload hình ảnh lên Cloudinary
+          $uploadResult = $cloudinary->uploadApi()->upload($hinhAnh, [
+              'folder' => 'IMG_PTPM/Products', // Thư mục trên Cloudinary
+              'resource_type' => 'image'
+          ]);
+  
+          // Lấy URL ảnh từ Cloudinary
+          $imageUrl = $uploadResult['secure_url'];
+  
+          // Lưu thông tin sản phẩm và URL ảnh vào cơ sở dữ liệu
+          $sqlInsert = "INSERT INTO sanpham (TenSanPham, MaHang, GiaBan, CPU, Ram, OCung, ManHinh, VGA, HeDieuHanh, TrongLuong, Pin, SoLuong, MoTa, HinhAnh) 
+                        VALUES (:tenSanPham, :maHang, :giaBan, :cpu, :ram, :oCung, :manHinh, :vga, :heDieuHanh, :trongLuong, :pin, :soLuong, :moTa, :hinhAnh)";
+          $stmt = $pdo->prepare($sqlInsert);
+          $stmt->execute([
+              ':tenSanPham' => $tenSanPham,
+              ':maHang' => $maHang,
+              ':giaBan' => $giaBan,
+              ':cpu' => $cpu,
+              ':ram' => $ram,
+              ':oCung' => $oCung,
+              ':manHinh' => $manHinh,
+              ':vga' => $vga,
+              ':heDieuHanh' => $heDieuHanh,
+              ':trongLuong' => $trongLuong,
+              ':pin' => $pin,
+              ':soLuong' => $soLuong,
+              ':moTa' => $moTa,
+              ':hinhAnh' => $imageUrl
+          ]);
    
-    $target_dir = "../public/images/products/";
-    $target_file = $target_dir . basename($_FILES["hinhAnh"]["name"]);
-    move_uploaded_file($_FILES["hinhAnh"]["tmp_name"], $target_file);
-   
-    $sqlInsert = "INSERT INTO sanpham (TenSanPham, MaHang, GiaBan, CPU, Ram, OCung, ManHinh, VGA, HeDieuHanh, TrongLuong, Pin, SoLuong, MoTa, HinhAnh) 
-                  VALUES (:tenSanPham, :maHang, :giaBan, :cpu, :ram, :oCung, :manHinh, :vga, :heDieuHanh, :trongLuong, :pin, :soLuong, :moTa, :hinhAnh)";
-    $stmt = $pdo->prepare($sqlInsert);
-    $stmt->execute([
-        ':tenSanPham' => $tenSanPham,
-        ':maHang' => $maHang,
-        ':giaBan' => $giaBan,
-        ':cpu' => $cpu,
-        ':ram' => $ram,
-        ':oCung' => $oCung,
-        ':manHinh' => $manHinh,
-        ':vga' => $vga,
-        ':heDieuHanh' => $heDieuHanh,
-        ':trongLuong' => $trongLuong,
-        ':pin' => $pin,
-        ':soLuong' => $soLuong,
-        ':moTa' => $moTa,
-        ':hinhAnh' => $hinhAnh
-    ]);
-   
-    header("Location: ListProducts.php");
-   }
-   ?>
+          header("Location: ListProducts.php");
+         } catch (Exception $e) {
+             echo "Lỗi upload ảnh hoặc lưu sản phẩm: " . $e->getMessage();
+         }
+     }
+?>
 <div class="card o-hidden border-0 shadow-lg my-5">
    <div class="card-body p-0">
       <div class="row">

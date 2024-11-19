@@ -97,7 +97,7 @@
                      <td><?php echo $sp->Pin ?></td>
                      <td><?php echo $sp->SoLuong ?></td>
                      <td>
-                        <img src="../public/images/products/<?php echo $sp->HinhAnh ?>" alt="<?php echo $sp->HinhAnh ?>" style="height: 200px;">
+                        <img src="<?php echo $sp->HinhAnh ?>" alt="<?php echo $sp->HinhAnh ?>" style="height: 200px;">
                      </td>
                      <td style="white-space: nowrap;">
                         <a href="UpdateProduct.php?id=<?php echo $sp->MaSanPham ?>">Chỉnh sửa </a>

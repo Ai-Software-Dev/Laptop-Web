@@ -5,6 +5,7 @@ include('includes/header.php');
 <div>
    <?php
    include_once '../core/Connection.php';
+   include './Cloudinary.php';
 
    $hang = null;
    if (isset($_GET['id'])) {
@@ -17,17 +18,27 @@ include('includes/header.php');
 
    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $tenHang = $_POST['tenHang'];
+      $logo = $_POST['currentLogo']; // Mặc định giữ logo hiện tại
 
       // Kiểm tra nếu có logo mới được tải lên
       if (!empty($_FILES['logo']['name'])) {
-         $logo = $_FILES['logo']['name'];
+         $fileTmpPath = $_FILES['logo']['tmp_name'];
+         $fileName = $_FILES['logo']['name'];
 
-         // Upload file logo mới
-         $target_dir = "../public/images/logo/";
-         $target_file = $target_dir . basename($_FILES["logo"]["name"]);
-         move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file);
-      } else {
-         $logo = $_POST['currentLogo'];  // Giữ lại logo hiện tại nếu không có logo mới
+         try {
+            // Upload logo mới lên Cloudinary
+            $uploadResult = $cloudinary->uploadApi()->upload($fileTmpPath, [
+                'folder' => 'IMG_PTPM/Category', // Tên thư mục trên Cloudinary
+                'public_id' => pathinfo($fileName, PATHINFO_FILENAME), // Tên file không có đuôi
+                'overwrite' => true,
+                'resource_type' => 'image',
+            ]);
+
+            // Lấy URL logo từ Cloudinary
+            $logo = $uploadResult['secure_url'];
+         } catch (Exception $e) {
+            die('Lỗi upload ảnh lên Cloudinary: ' . $e->getMessage());
+         }
       }
 
       // Cập nhật thông tin thương hiệu
