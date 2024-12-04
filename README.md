@@ -39,7 +39,7 @@
 </nav>
 
 # Mô hình hoạt động
-![Mô hình hoạt động]([https://res.cloudinary.com/dypftrmtl/image/upload/v1733327404/mohinhhoatdong_pr1rwx.jpg "Mô hình hoạt động")
+<img src="https://res.cloudinary.com/dypftrmtl/image/upload/v1733327404/mohinhhoatdong_pr1rwx.jpg" alt="Mô hình hoạt động"/>
 
 # Chi Tiết
 ## Website quản lý cửa hàng laptop
