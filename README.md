@@ -37,8 +37,9 @@
     <li>Công cụ: Visual Studio Code</li>
   </ul>
 </nav>
+
 # Mô hình hoạt động
-<img src="https://drive.google.com/file/d/1exE5v_p5PovcZw7angt43QAdD9DhDPJ7/view?usp=sharing"/>
+<img src="https://drive.google.com/file/d/1exE5v_p5PovcZw7angt43QAdD9DhDPJ7/view?usp=drive_link"/>
 
 # Chi Tiết
 ## Website quản lý cửa hàng laptop
