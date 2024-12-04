@@ -48,7 +48,7 @@
                 $error_message = "Tên tài khoản đã tồn tại!";
             } else {
                 // Thêm tài khoản mới vào cơ sở dữ liệu
-                $sql = "INSERT INTO [user] (TenKhachHang, TenTaiKhoan, MatKhau, Email) VALUES (:fullname, :username, :password, :email)"; // Use square brackets here
+                $sql = "INSERT INTO [users] (TenKhachHang, TenTaiKhoan, MatKhau, Email) VALUES (:fullname, :username, :password, :email)"; // Use square brackets here
                 $sql2 = "INSERT INTO giohang (MaTaiKhoan) VALUES (:matk)";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(':fullname', $fullname);
@@ -62,11 +62,11 @@
                     $stmt2->bindParam(':matk', $matk);
                     $stmt2->execute();
 
-                    $_SESSION['username'] = $username;
-                    $_SESSION['tenkhachhang'] = $fullname;
-                    $_SESSION['mataikhoan'] = $matk;
-                    $_SESSION['email'] = $email;
-                    header("Location: login.php");
+                    // $_SESSION['username'] = $username;
+                    // $_SESSION['tenkhachhang'] = $fullname;
+                    // $_SESSION['mataikhoan'] = $matk;
+                    // $_SESSION['email'] = $email;
+                    header("Location: login.php?register_success=true");
                     exit();
                 } else {
                     $error_message = "Đã xảy ra lỗi khi đăng ký tài khoản!";
