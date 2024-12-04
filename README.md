@@ -39,7 +39,7 @@
 </nav>
 
 # Mô hình hoạt động
-<img src="https://drive.google.com/file/d/1exE5v_p5PovcZw7angt43QAdD9DhDPJ7/view?usp=drive_link"/>
+![Mô hình hoạt động]([https://drive.google.com/uc?id=1exE5v_p5PovcZw7angt43QAdD9DhDPJ7](https://drive.google.com/file/d/1exE5v_p5PovcZw7angt43QAdD9DhDPJ7/view?usp=drive_link) "Mô hình hoạt động")
 
 # Chi Tiết
 ## Website quản lý cửa hàng laptop
