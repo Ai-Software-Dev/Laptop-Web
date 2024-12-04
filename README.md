@@ -35,7 +35,6 @@
     <li>Database: SQL Server</li>
     <li>Ngôn ngữ: PHP</li>
     <li>Công cụ: Visual Studio Code</li>
-    <li>AI: Chatbox</li>
   </ul>
 </nav>
 
@@ -43,7 +42,6 @@
 ## Website quản lý cửa hàng laptop
 <h4>Mô tả dự án: </h4>
 <p>Dự án Website kinh doanh laptop là một nền tảng thương mại điện tử chuyên cung cấp các sản phẩm laptop từ nhiều thương hiệu khác nhau . Mục tiêu của dự án là xây dựng một website thân thiện với người dùng, cung cấp thông tin sản phẩm chi tiết và mang đến trải nghiệm mua sắm trực tuyến thuận tiện, tin cậy cho người dùng. giúp khách hàng dễ dàng tìm kiếm các sản phẩm phù hợp với nhu cầu công việc, học tập và giải trí. </p>
-<p>Hệ thống được tích hợp thêm tính năng AI Chatbox, một trợ lý ảo thông minh được tích hợp ngay trên trang web, giúp tăng cường trải nghiệm mua sắm cho khách hàng bằng cách cung cấp sự hỗ trợ nhanh chóng, chính xác và hiệu quả. AI Chatbox không chỉ giúp người dùng dễ dàng tương tác với hệ thống mà còn mang lại cảm giác như đang trò chuyện trực tiếp với một nhân viên tư vấn chuyên nghiệp.</p>
 
 # Nghiệp vụ
 <table>
