@@ -165,7 +165,7 @@
   </tr>
 </table>
 
-# Chức năng 
+# Mô tả  chức năng 
 <h4>Trang chủ và điều hướng:</h4>
 <ul>
   <li>Giao diện trang chủ được thiết kế với bố cục trực quan, hiển thị sản phẩm nổi bật của cửa hàng</li>
