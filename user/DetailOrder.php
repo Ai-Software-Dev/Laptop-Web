@@ -77,9 +77,9 @@
                                         echo "<tr>";
                                         echo "<td>" . htmlspecialchars($bill->MaHoaDon) . "</td>";
                                         echo "<td>" . htmlspecialchars($bill->TenSanPham) . "</td>";
-                                        echo "<td><img src='../public/images/products/" . htmlspecialchars($bill->HinhAnh) . "' alt='Hình ảnh sản phẩm' width='100'></td>";
+                                        echo "<td><img src='" . htmlspecialchars($bill->HinhAnh) . "' alt='Hình ảnh sản phẩm' width='100'></td>";
                                         echo "<td>" . htmlspecialchars($bill->SoLuong) . "</td>";
-                                        echo "<td>" . htmlspecialchars($bill->ThanhTien) . "</td>";
+                                        echo "<td>" . number_format($bill->ThanhTien, 0, ',', '.') . "đ</td>";
                                         echo "</tr>";
                                     }
                                 } else {

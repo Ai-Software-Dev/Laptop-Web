@@ -74,7 +74,7 @@
                                         echo "<td>" . htmlspecialchars($order['MaHoaDon']) . "</td>";
                                         echo "<td>" . htmlspecialchars($order['NgayMua']) . "</td>";
                                         echo "<td>" . htmlspecialchars($order['DiaChi']) . "</td>";
-                                        echo "<td>" . htmlspecialchars($order['TongTien']) . "</td>";
+                                        echo "<td>" . number_format($order['TongTien'], 0, ',', '.') . "đ</td>";
                                         echo "<td>" . htmlspecialchars($order['TrangThai']) . "</td>";
                                         echo "<td><a style='font-size: 14px;' href='DetailOrder.php?id=" . htmlspecialchars($order['MaHoaDon']) . "'>Xem chi tiết</a></td>";
                                         echo "</tr>";
