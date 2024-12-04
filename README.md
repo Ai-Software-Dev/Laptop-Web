@@ -167,7 +167,8 @@
 </ul>
 <h4>Chi tiết sản phẩm:</h4>
 <ul>
-  <li>Mỗi sản phẩm sẽ có trang chi tiết riêng với hình ảnh chất lượng cao, mô tả đầy đủ về thông số kỹ thuật, các tính năng nổi bật, giá cả và chương trình khuyến mãi (nếu có).</li>
+  <li>Mỗi sản phẩm sẽ có trang chi tiết riêng với hình ảnh chất lượng cao, mô tả đầy đủ về thông số kỹ thuật, các tính năng nổi bật</li>
+  <li>Danh sách các sản phẩm liên quan</li>
 </ul>
 <h4>Chức năng mua sắm:</h4>
 <ul>
@@ -176,12 +177,12 @@
 </ul>
 <h4>Quản lý tài khoản và đơn hàng:</h4>
 <ul>
-  <li>Khách hàng có thể đăng ký tài khoản để lưu trữ thông tin cá nhân, quản lý địa chỉ giao hàng </li>
+  <li>Khách hàng có thể đăng ký tài khoản để lưu trữ thông tin cá nhân </li>
   <li>Tài khoản cũng cho phép theo dõi lịch sử mua hàng, kiểm tra tình trạng đơn hàng hiện tại.</li>
 </ul>
-<h4>Hỗ trợ khách hàng và tư vấn:</h4>
+
 <ul>
-  <li>Tích hợp AI chatbox hỗ trợ khách hàng 24/24.</li>
+  
 </ul>
 <h4>Chức năng của admin:</h4>
 <ul>
