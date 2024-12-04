@@ -101,12 +101,7 @@
       <p class="text-center">Copyright © 2024</p>
    </section>
 </div>
-</div>
-         
-      </div>
-      </div>      
-      </div>
-      <script  src="/AISoftDev/laptop_web/user/assets/js/slick.min.js"></script>
+<script  src="/AISoftDev/laptop_web/user/assets/js/slick.min.js"></script>
 
 <script type="text/javascript">
     $(function() {

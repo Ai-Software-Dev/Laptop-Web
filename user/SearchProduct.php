@@ -43,7 +43,7 @@
             <div class="showitem">
                 <div class="col-md-3 item-product bor" style="height: 300px; margin: 5px; width: 23.8%">
                     <a href="ShowDetail.php?id=<?php echo htmlspecialchars($sp->MaSanPham) ?>"> <!-- Link đến sản phẩm -->
-                        <img src="../public/images/products/<?php echo htmlspecialchars($sp->HinhAnh) ?>" class="" width="100%" height="180">
+                        <img src="<?php echo htmlspecialchars($sp->HinhAnh) ?>" class="" width="100%" height="180">
                     
                         <div class="info-item">
                             <p><?php echo htmlspecialchars($sp->TenSanPham) ?></p> <br>

@@ -20,7 +20,8 @@
         ]);
         $mahang = $st_mahang->fetchAll(PDO::FETCH_OBJ);
 
-        $sql = "SELECT * FROM sanpham WHERE MaHang = :mahang LIMIT 3";
+        // Cập nhật câu truy vấn ở đây
+        $sql = "SELECT * FROM sanpham WHERE MaHang = :mahang ORDER BY MaSanPham OFFSET 0 ROWS FETCH NEXT 3 ROWS ONLY";
         $st = $pdo->prepare($sql);
         $st->execute([
             'mahang' => $mahang[0]->MaHang
@@ -39,7 +40,7 @@
                 <div class="showitem">
                     <div class="col-md-3 item-product bor" style="height: 300px; margin: 5px; width: 100%">
                         <a href="ShowDetail.php?id=<?php echo $sp->MaSanPham ?>">
-                            <img src="../public/images/products/<?php echo htmlspecialchars($sp->HinhAnh) ?>" class="" width="100%" height="180">
+                            <img src="<?php echo htmlspecialchars($sp->HinhAnh) ?>" class="" width="100%" height="180">
                         
                             <div class="info-item">
                                 <p><?php echo htmlspecialchars($sp->TenSanPham) ?></p> <br>

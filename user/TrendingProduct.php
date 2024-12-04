@@ -7,7 +7,7 @@
     <?php
        include_once '../core/Connection.php';
 
-        $sql = "SELECT * FROM sanpham ORDER BY GiaBan DESC LIMIT 8";
+        $sql = "SELECT TOP 8 * FROM sanpham ORDER BY GiaBan DESC";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $sps = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -37,7 +37,7 @@
                         <div class="col-md-3 item-product bor" >
                             <a href="ShowDetail.php?id=<?php echo $sp->MaSanPham ?>">
                                 <div class="product-img">
-                                    <img src="../public/images/products/<?php echo htmlspecialchars($sp->HinhAnh) ?>" class="" width="100%" height="180">
+                                    <img src="<?php echo htmlspecialchars($sp->HinhAnh) ?>" class="" width="100%" height="180">
                                 </div>
                                 <div class="info-item">
                                     <p class="product-name"><?php echo htmlspecialchars($sp->TenSanPham) ?></p> <br>

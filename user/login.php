@@ -32,22 +32,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     // Kiểm tra tài khoản tồn tại trong cột TenTaiKhoan
-    $sql = "SELECT * FROM user WHERE TenTaiKhoan = :username";
+    $sql = "SELECT * FROM users WHERE TenTaiKhoan = :username"; // Sử dụng dấu ngoặc vuông cho bảng [user]
 
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':username', $username);
-    $stmt->execute();
+    $stmt->bindParam(':username', $username); // Ràng buộc tham số
+    $stmt->execute(); // Thực thi câu lệnh
 
-    if ($stmt->rowCount() > 0) {
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Không cần dùng rowCount, chỉ cần kiểm tra fetch() có trả về bản ghi nào hay không
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Giả định MatKhau được lưu dưới dạng văn bản đơn giản (điều này không được khuyến khích trong sản xuất)
-        // Nếu MatKhau được mã hóa, sử dụng password_verify
+    if ($row) { // Nếu $row không rỗng, tức là có dữ liệu
+        // Giả định MatKhau được lưu dưới dạng văn bản đơn giản (không khuyến khích trong sản xuất)
         if ($password == $row['MatKhau']) {
             $_SESSION['username'] = $username; // Lưu TenTaiKhoan vào session
             $_SESSION['tenkhachhang'] = $row['TenKhachHang']; // Lưu TenKhachHang vào session
             $_SESSION['mataikhoan'] = $row['MaTaiKhoan']; // Lưu MaTaiKhoan
-            $_SESSION['email'] = $row['Email']; //Email
+            $_SESSION['email'] = $row['Email']; // Lưu Email
             header("Location: index.php");
             exit();
         } else {

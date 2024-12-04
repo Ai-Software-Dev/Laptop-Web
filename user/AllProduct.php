@@ -39,7 +39,7 @@
         $pages = $p->findPages($count, $limit);
 
         // Query to fetch the records for the current page
-        $sql2 = "SELECT * FROM sanpham LIMIT $limit OFFSET $vt";
+        $sql2 = "SELECT * FROM sanpham ORDER BY MaSanPham OFFSET $vt ROWS FETCH NEXT $limit ROWS ONLY"; // Cập nhật câu truy vấn
         $sta = $pdo->prepare($sql2);
         $sta->execute();
         $san_pham = $sta->fetchAll(PDO::FETCH_OBJ);
@@ -61,7 +61,7 @@
                     <div class="showitem">
                         <div class="col-md-3 item-product bor" style="height: 300px; margin: 5px; width: 23.8%">
                             <a href="ShowDetail.php?id=<?php echo $sp->MaSanPham ?>">
-                                <img src="../public/images/products/<?php echo htmlspecialchars($sp->HinhAnh) ?>" class="" width="100%" height="180">
+                                <img src="<?php echo htmlspecialchars($sp->HinhAnh) ?>" class="" width="100%" height="180">
                             
                                 <div class="info-item">
                                     <p><?php echo htmlspecialchars($sp->TenSanPham) ?></p> <br>
@@ -75,8 +75,6 @@
                 }
             }
         ?>
-
-        
     </section>
     
 </body>
