@@ -46,11 +46,11 @@
 <h4>Mô tả dự án: </h4>
 <p>Dự án Website kinh doanh laptop là một nền tảng thương mại điện tử chuyên cung cấp các sản phẩm laptop từ nhiều thương hiệu khác nhau . Mục tiêu của dự án là xây dựng một website thân thiện với người dùng, cung cấp thông tin sản phẩm chi tiết và mang đến trải nghiệm mua sắm trực tuyến thuận tiện, tin cậy cho người dùng. giúp khách hàng dễ dàng tìm kiếm các sản phẩm phù hợp với nhu cầu công việc, học tập và giải trí. </p>
 
-# Nghiệp vụ
+# Chức năng
 <table>
   <tr>
     <th>STT</th>
-    <th>Nghiệp Vụ</th>
+    <th>Chức năng</th>
     <Th>Thực hiện</Th>
   </tr>
   <tr>
@@ -156,6 +156,11 @@
    <tr>
     <td>21</td>
     <td>Xây dựng trang giới thiệu</td>
+    <td>Lưu Đức Vinh</td>
+  </tr>
+   <tr>
+    <td>22</td>
+    <td>Tích hợp API thanh toán VNPAY</td>
     <td>Lưu Đức Vinh</td>
   </tr>
 </table>
