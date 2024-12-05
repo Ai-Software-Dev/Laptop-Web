@@ -35,21 +35,22 @@
     <li>Database: SQL Server</li>
     <li>Ngôn ngữ: PHP</li>
     <li>Công cụ: Visual Studio Code</li>
-    <li>AI: Chatbox</li>
   </ul>
 </nav>
+
+# Mô hình hoạt động
+<img src="https://res.cloudinary.com/dypftrmtl/image/upload/v1733327404/mohinhhoatdong_pr1rwx.jpg" alt="Mô hình hoạt động"/>
 
 # Chi Tiết
 ## Website quản lý cửa hàng laptop
 <h4>Mô tả dự án: </h4>
 <p>Dự án Website kinh doanh laptop là một nền tảng thương mại điện tử chuyên cung cấp các sản phẩm laptop từ nhiều thương hiệu khác nhau . Mục tiêu của dự án là xây dựng một website thân thiện với người dùng, cung cấp thông tin sản phẩm chi tiết và mang đến trải nghiệm mua sắm trực tuyến thuận tiện, tin cậy cho người dùng. giúp khách hàng dễ dàng tìm kiếm các sản phẩm phù hợp với nhu cầu công việc, học tập và giải trí. </p>
-<p>Hệ thống được tích hợp thêm tính năng AI Chatbox, một trợ lý ảo thông minh được tích hợp ngay trên trang web, giúp tăng cường trải nghiệm mua sắm cho khách hàng bằng cách cung cấp sự hỗ trợ nhanh chóng, chính xác và hiệu quả. AI Chatbox không chỉ giúp người dùng dễ dàng tương tác với hệ thống mà còn mang lại cảm giác như đang trò chuyện trực tiếp với một nhân viên tư vấn chuyên nghiệp.</p>
 
-# Nghiệp vụ
+# Chức năng
 <table>
   <tr>
     <th>STT</th>
-    <th>Nghiệp Vụ</th>
+    <th>Chức năng</th>
     <Th>Thực hiện</Th>
   </tr>
   <tr>
@@ -107,59 +108,26 @@
     <td>Đăng ký tài khoản</td>
     <td>Nguyễn Xuân Bính</td>
   </tr>
+  
+ 
    <tr>
     <td>12</td>
-    <td>Xây dựng khung trang admin</td>
-    <td>Nguyễn Xuân Bính</td>
-  </tr>
-   <tr>
-    <td>13</td>
-    <td>Báo Cáo thống kê</td>
-    <td>Nguyễn Xuân Bính</td>
-  </tr>
-   <tr>
-    <td>14</td>
-    <td>Quản lý thương hiệu</td>
-    <td>Hà Thị Minh Thư</td>
-  </tr>
-  <tr>
-    <td>15</td>
-    <td>Quản lý sản phẩm</td>
-    <td>Lưu Đức Vinh</td>
-  </tr>
-  <tr>
-    <td>16</td>
-    <td>Quản lý đơn hàng</td>
-    <td>Nguyễn Xuân Bính</td>
-  </tr>
-   <tr>
-    <td>17</td>
-    <td>Quản lý khách hàng</td>
-    <td>Nguyễn Xuân Bính</td>
-  </tr>
-   <tr>
-    <td>18</td>
-    <td>Xuất đóa đơn</td>
-    <td>Hà Thị Minh Thư</td>
-  </tr>
-   <tr>
-    <td>19</td>
-    <td>Xác nhận đơn hàng</td>
-    <td>Lưu Đức Vinh</td>
-  </tr>
-   <tr>
-    <td>20</td>
     <td>Xây dựng trang liên hệ</td>
     <td>Lưu Đức Vinh</td>
   </tr>
    <tr>
-    <td>21</td>
+    <td>13</td>
     <td>Xây dựng trang giới thiệu</td>
+    <td>Lưu Đức Vinh</td>
+  </tr>
+   <tr>
+    <td>14</td>
+    <td>Tích hợp API thanh toán VNPAY</td>
     <td>Lưu Đức Vinh</td>
   </tr>
 </table>
 
-# Chức năng 
+# Mô tả  chức năng 
 <h4>Trang chủ và điều hướng:</h4>
 <ul>
   <li>Giao diện trang chủ được thiết kế với bố cục trực quan, hiển thị sản phẩm nổi bật của cửa hàng</li>
@@ -167,7 +135,8 @@
 </ul>
 <h4>Chi tiết sản phẩm:</h4>
 <ul>
-  <li>Mỗi sản phẩm sẽ có trang chi tiết riêng với hình ảnh chất lượng cao, mô tả đầy đủ về thông số kỹ thuật, các tính năng nổi bật, giá cả và chương trình khuyến mãi (nếu có).</li>
+  <li>Mỗi sản phẩm sẽ có trang chi tiết riêng với hình ảnh chất lượng cao, mô tả đầy đủ về thông số kỹ thuật, các tính năng nổi bật</li>
+  <li>Danh sách các sản phẩm liên quan</li>
 </ul>
 <h4>Chức năng mua sắm:</h4>
 <ul>
@@ -176,19 +145,12 @@
 </ul>
 <h4>Quản lý tài khoản và đơn hàng:</h4>
 <ul>
-  <li>Khách hàng có thể đăng ký tài khoản để lưu trữ thông tin cá nhân, quản lý địa chỉ giao hàng </li>
+  <li>Khách hàng có thể đăng ký tài khoản để lưu trữ thông tin cá nhân </li>
   <li>Tài khoản cũng cho phép theo dõi lịch sử mua hàng, kiểm tra tình trạng đơn hàng hiện tại.</li>
 </ul>
-<h4>Hỗ trợ khách hàng và tư vấn:</h4>
+
 <ul>
-  <li>Tích hợp AI chatbox hỗ trợ khách hàng 24/24.</li>
+  
 </ul>
-<h4>Chức năng của admin:</h4>
-<ul>
-  <li>Xem báo cáo thống kê.</li>
-  <li>Quản lý thương hiệu.</li>
-  <li>Quản lý sản phẩm.</li>
-  <li>Quản lý đơn hàng.</li>
-  <li>Quản lý người dùng.</li>
-</ul>
+
 
