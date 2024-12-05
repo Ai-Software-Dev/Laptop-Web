@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'Connection.php';
+include_once '../core/Connection.php';
 
 if (!isset($_SESSION['reset_email'])) {
     header('Location: ForgetPassword.php');
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $r_email = $_SESSION['reset_email'];
 
     // Cập nhật mật khẩu mới vào cơ sở dữ liệu
-    $updateStmt = $pdo->prepare("UPDATE user SET MatKhau = :newPassword WHERE Email = :r_email");
+    $updateStmt = $pdo->prepare("UPDATE [users] SET MatKhau = :newPassword WHERE Email = :r_email");
     $updateStmt->bindParam(':newPassword', $newPassword);
     $updateStmt->bindParam(':r_email', $r_email);
     $updateStmt->execute();

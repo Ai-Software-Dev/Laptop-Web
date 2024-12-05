@@ -1,28 +1,68 @@
 <?php
 session_start();
-require './core/Connection.php'; // Kết nối đến cơ sở dữ liệu
+include_once '../core/Connection.php'; // Kết nối đến cơ sở dữ liệu
+require("./PHPMailer-master/src/PHPMailer.php");
+require("./PHPMailer-master/src/SMTP.php");
+require("./PHPMailer-master/src/Exception.php");
+
+// use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
 
     // Kiểm tra xem email có tồn tại trong cơ sở dữ liệu không
-    $stmt = $pdo->prepare("SELECT * FROM user WHERE Email = :email");
+    $stmt = $pdo->prepare("SELECT * FROM [users] WHERE Email = :email");
     $stmt->bindParam(':email', $email);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
-        // Nếu email tồn tại, lưu email vào session và chuyển hướng đến trang ResetPassword.php
+        // Nếu email tồn tại, sinh mã OTP
+        $otp = rand(100000, 999999);
+        $_SESSION['otp'] = $otp;
         $_SESSION['reset_email'] = $email;
 
-        // Chuyển hướng người dùng đến trang ResetPassword.php
-        header('Location: ResetPassword.php');
-        exit();
+        // Cấu hình và gửi email
+        $mail = new PHPMailer\PHPMailer\PHPMailer();
+        try {
+            $mail->IsSMTP();
+            $mail->SMTPDebug = 2;
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = 'ssl';
+            $mail->Host = "smtp.gmail.com";
+            $mail->Port = 465;
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
+            $mail->IsHTML(true);
+            $mail->Username = "maxmaxshopp@gmail.com";
+            $mail->Password = "rhrg obph rbpg tmsm";
+            $mail->SetFrom("maxmaxshopp@gmail.com");
+            $mail->Subject = "Mã OTP đặt lại mật khẩu";
+            $mail->Body = "<p>Xin chào,</p>
+                <p>Mã OTP để đặt lại mật khẩu của bạn là: <strong>$otp</strong></p>
+                <p>Vui lòng nhập mã này trên trang để tiếp tục.</p>
+                <p>Trân trọng,<br>Your Shop Name</p>";
+            $mail->AddAddress($email);
+
+            if ($mail->Send()) {
+                $_SESSION['message'] = "Mã OTP đã được gửi đến email $email.";
+                header('Location: EnterOTP.php'); // Chuyển hướng tới trang nhập OTP
+                exit();
+            } else {
+                $_SESSION['email_error'] = "Không thể gửi OTP. Vui lòng thử lại sau.";
+            }
+        } catch (Exception $e) {
+            $_SESSION['email_error'] = "Lỗi gửi email: " . $mail->ErrorInfo;
+        }
     } else {
         // Nếu email không tồn tại, hiển thị thông báo lỗi
         $_SESSION['email_error'] = "Email không tồn tại trong hệ thống.";
-        header('Location: ForgetPassword.php');
-        exit();
     }
 }
 ?>
@@ -72,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- FOOTER -->
     <?php
-    include('layout/header.php');
+    include('layout/footer.php');
     ?>
     </div>
     <!-- END MAINCONTENT -->

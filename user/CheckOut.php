@@ -94,34 +94,35 @@
         {
             $magiohang = $_POST["magiohang"];
 
+            // Lấy chi tiết giỏ hàng
             $sql = "SELECT CHITIETGIOHANG.MASANPHAM, SANPHAM.TENSANPHAM, SANPHAM.HINHANH, SANPHAM.GIABAN, CHITIETGIOHANG.SOLUONG, CHITIETGIOHANG.THANHTIEN, SANPHAM.SOLUONG AS SANPHAM_SOLUONG 
-            FROM CHITIETGIOHANG 
-            JOIN SANPHAM ON CHITIETGIOHANG.MASANPHAM = SANPHAM.MASANPHAM 
-            WHERE CHITIETGIOHANG.MAGIOHANG = :magiohang";
+                    FROM CHITIETGIOHANG 
+                    JOIN SANPHAM ON CHITIETGIOHANG.MASANPHAM = SANPHAM.MASANPHAM 
+                    WHERE CHITIETGIOHANG.MAGIOHANG = :magiohang";
             $st1 = $pdo->prepare($sql);
             $st1->execute(['magiohang' => $magiohang]);
             $chitietgiohang = $st1->fetchAll(PDO::FETCH_OBJ);
 
+            // Lấy lựa chọn thanh toán
             $selected_option = $_POST["choices"];
-            if ($selected_option == 1) 
-            {
+            if ($selected_option == 1) {
                 $selected_option = "Thanh toán khi nhận hàng";
-            } 
-            else 
-            {
+            } else {
                 $selected_option = "Chuyển khoản ngân hàng";
             }
 
             $diachi = $_POST["addrs"];
             $sdt = $_POST["phone"];
 
-            if (!preg_match('/^0\d{9}$/', $sdt)) 
-            {
+            // Kiểm tra số điện thoại hợp lệ
+            if (!preg_match('/^0\d{9}$/', $sdt)) {
                 $tb = "Vui lòng kiểm tra lại SĐT";
-            }
-            else
+            } 
+            else 
             {
-                $sql_inserthd = "INSERT INTO HOADON (MaTaiKhoan, NgayMua, DiaChi, SDT, HinhThucThanhToan, TongTien, TrangThai) VALUES (:matk, GETDATE(), :diachi, :sdt, :hinhthuc, :tongtien, :trangthai)";
+                // Lưu thông tin hóa đơn
+                $sql_inserthd = "INSERT INTO HOADON (MaTaiKhoan, NgayMua, DiaChi, SDT, HinhThucThanhToan, TongTien, TrangThai) 
+                                VALUES (:matk, GETDATE(), :diachi, :sdt, :hinhthuc, :tongtien, :trangthai)";
                 $st_inserthd = $pdo->prepare($sql_inserthd);
                 $st_inserthd->execute([
                     'matk' => $_SESSION["mataikhoan"],
@@ -134,9 +135,10 @@
                 
                 $mahd = $pdo->lastInsertId();
 
-                foreach ($chitietgiohang as $row) 
-                {
-                    $sql_insertcthd = "INSERT INTO chitiethoadon (MaHoaDon, MaSanPham, SoLuong, ThanhTien) VALUES (:mahd, :masp, :soluong, :thanhtien)";
+                // Lưu chi tiết hóa đơn
+                foreach ($chitietgiohang as $row) {
+                    $sql_insertcthd = "INSERT INTO chitiethoadon (MaHoaDon, MaSanPham, SoLuong, ThanhTien) 
+                                    VALUES (:mahd, :masp, :soluong, :thanhtien)";
                     $st_insertcthd = $pdo->prepare($sql_insertcthd);
                     $st_insertcthd->execute([
                         'mahd' => $mahd,
@@ -146,14 +148,68 @@
                     ]);
                 }
 
+                // Cập nhật số lượng sản phẩm tồn kho
                 updateSLTon($chitietgiohang, $pdo);
 
+                // Xóa sản phẩm trong giỏ hàng
                 $sql_deleteAllitem = "DELETE FROM CHITIETGIOHANG WHERE MAGIOHANG = :magiohang";
                 $st_deleteAllitem = $pdo->prepare($sql_deleteAllitem);
-                $st_deleteAllitem->execute([
-                    'magiohang' => $magiohang
-                ]);
-            ?>
+                $st_deleteAllitem->execute(['magiohang' => $magiohang]);
+
+                // Nếu chọn "Chuyển khoản ngân hàng", điều hướng tới VNPAY
+                if ($selected_option == "Chuyển khoản ngân hàng") {
+                    // Các tham số yêu cầu cho thanh toán VNPAY
+                    $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+                    $vnp_Returnurl = "http://localhost/PTPM/Laptop-Web/user/index.php";
+                    $vnp_TmnCode = "262XSFHX"; // Mã website tại VNPAY
+                    $vnp_HashSecret = "MMZXWISZNUUUNKGOZQPCPASLLTHYGMTB"; // Chuỗi bí mật
+
+                    $vnp_TxnRef = $mahd; // Mã đơn hàng (hoặc ID hóa đơn trong cơ sở dữ liệu)
+                    $vnp_OrderInfo = "Thanh toán hóa đơn #" . $mahd;
+                    $vnp_Amount = (showTongTien($chitietgiohang) + 100000) * 100; // Số tiền thanh toán, tính bằng đồng
+                    $vnp_Locale = "vn"; // Ngôn ngữ
+                    $vnp_BankCode = "NCB"; // Mã ngân hàng, nếu có
+                    $vnp_IpAddr = $_SERVER['REMOTE_ADDR']; // Địa chỉ IP người dùng
+
+                    // Tạo dữ liệu để gửi đến VNPAY
+                    $inputData = [
+                        "vnp_Version" => "2.1.0",
+                        "vnp_TmnCode" => $vnp_TmnCode,
+                        "vnp_Amount" => $vnp_Amount,
+                        "vnp_Command" => "pay",
+                        "vnp_CreateDate" => date('YmdHis'),
+                        "vnp_CurrCode" => "VND",
+                        "vnp_IpAddr" => $vnp_IpAddr,
+                        "vnp_Locale" => $vnp_Locale,
+                        "vnp_OrderInfo" => $vnp_OrderInfo,
+                        "vnp_OrderType" => "Thanh toán hóa đơn",
+                        "vnp_ReturnUrl" => $vnp_Returnurl,
+                        "vnp_TxnRef" => $vnp_TxnRef,
+                    ];
+
+                    if (isset($vnp_BankCode)) {
+                        $inputData['vnp_BankCode'] = $vnp_BankCode;
+                    }
+
+                    // Sắp xếp các tham số theo thứ tự và tạo chuỗi tham số
+                    ksort($inputData);
+                    $query = "";
+                    $hashdata = "";
+                    foreach ($inputData as $key => $value) {
+                        $hashdata .= $query ? '&' . urlencode($key) . "=" . urlencode($value) : urlencode($key) . "=" . urlencode($value);
+                        $query .= urlencode($key) . "=" . urlencode($value) . '&';
+                    }
+
+                    // Tạo chuỗi hash bảo mật
+                    $vnpSecureHash = hash_hmac('sha512', $hashdata, $vnp_HashSecret);
+                    $vnp_Url .= "?" . $query . 'vnp_SecureHash=' . $vnpSecureHash;
+
+                    // Chuyển hướng đến VNPAY
+                    header("Location: $vnp_Url");
+                    exit();
+                }
+
+                ?>
                 <div class="alert">
                     <p style="font-size: 25px;">Thông báo</p>
                     <p style="font-size: 18px; color:white">Đặt hàng thành công.</p>
@@ -167,6 +223,7 @@
                 exit();
             }
         }
+
 
         include("layout/header.php");
 
