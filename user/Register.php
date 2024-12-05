@@ -66,7 +66,8 @@
                     // $_SESSION['tenkhachhang'] = $fullname;
                     // $_SESSION['mataikhoan'] = $matk;
                     // $_SESSION['email'] = $email;
-                    header("Location: login.php");
+                    header("Location: login.php?register_success=true");
+                    // header("Location: login.php");
                     exit();
                 } else {
                     $error_message = "Đã xảy ra lỗi khi đăng ký tài khoản!";

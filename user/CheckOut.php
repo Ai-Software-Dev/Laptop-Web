@@ -160,7 +160,7 @@
                 if ($selected_option == "Chuyển khoản ngân hàng") {
                     // Các tham số yêu cầu cho thanh toán VNPAY
                     $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-                    $vnp_Returnurl = "http://localhost/Laptop-Web/user/index.php";
+                    $vnp_Returnurl = "http://localhost/PTPM/Laptop-Web/user/index.php";
                     $vnp_TmnCode = "262XSFHX"; // Mã website tại VNPAY
                     $vnp_HashSecret = "MMZXWISZNUUUNKGOZQPCPASLLTHYGMTB"; // Chuỗi bí mật
 

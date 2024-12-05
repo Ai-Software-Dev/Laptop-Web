@@ -41,7 +41,6 @@
                     <div class="col-md-3 item-product bor" style="height: 300px; margin: 5px; width: 100%">
                         <a href="ShowDetail.php?id=<?php echo $sp->MaSanPham ?>">
                             <img src="<?php echo htmlspecialchars($sp->HinhAnh) ?>" class="" width="100%" height="180">
-                        
                             <div class="info-item">
                                 <p><?php echo htmlspecialchars($sp->TenSanPham) ?></p> <br>
                                 <b class="price"><?php echo number_format($sp->GiaBan, 0, ',', '.') ?>đ</b><br>
