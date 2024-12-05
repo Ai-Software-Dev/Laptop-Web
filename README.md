@@ -108,58 +108,20 @@
     <td>Đăng ký tài khoản</td>
     <td>Nguyễn Xuân Bính</td>
   </tr>
+  
+ 
    <tr>
     <td>12</td>
-    <td>Xây dựng khung trang admin</td>
-    <td>Nguyễn Xuân Bính</td>
-  </tr>
-   <tr>
-    <td>13</td>
-    <td>Báo Cáo thống kê</td>
-    <td>Nguyễn Xuân Bính</td>
-  </tr>
-   <tr>
-    <td>14</td>
-    <td>Quản lý thương hiệu</td>
-    <td>Hà Thị Minh Thư</td>
-  </tr>
-  <tr>
-    <td>15</td>
-    <td>Quản lý sản phẩm</td>
-    <td>Lưu Đức Vinh</td>
-  </tr>
-  <tr>
-    <td>16</td>
-    <td>Quản lý đơn hàng</td>
-    <td>Nguyễn Xuân Bính</td>
-  </tr>
-   <tr>
-    <td>17</td>
-    <td>Quản lý khách hàng</td>
-    <td>Nguyễn Xuân Bính</td>
-  </tr>
-   <tr>
-    <td>18</td>
-    <td>Xuất đóa đơn</td>
-    <td>Hà Thị Minh Thư</td>
-  </tr>
-   <tr>
-    <td>19</td>
-    <td>Xác nhận đơn hàng</td>
-    <td>Lưu Đức Vinh</td>
-  </tr>
-   <tr>
-    <td>20</td>
     <td>Xây dựng trang liên hệ</td>
     <td>Lưu Đức Vinh</td>
   </tr>
    <tr>
-    <td>21</td>
+    <td>13</td>
     <td>Xây dựng trang giới thiệu</td>
     <td>Lưu Đức Vinh</td>
   </tr>
    <tr>
-    <td>22</td>
+    <td>14</td>
     <td>Tích hợp API thanh toán VNPAY</td>
     <td>Lưu Đức Vinh</td>
   </tr>
@@ -190,12 +152,5 @@
 <ul>
   
 </ul>
-<h4>Chức năng của admin:</h4>
-<ul>
-  <li>Xem báo cáo thống kê.</li>
-  <li>Quản lý thương hiệu.</li>
-  <li>Quản lý sản phẩm.</li>
-  <li>Quản lý đơn hàng.</li>
-  <li>Quản lý người dùng.</li>
-</ul>
+
 
